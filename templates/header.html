@@ -1,0 +1,48 @@
+<!-- Navbar Start -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="banner">
+    <div class="container">
+
+        <div class="navbar-header">
+
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a href="{% url 'home' %}" class="navbar-brand">Django блог-шаблон</a>
+        </div>
+
+        <nav class="collapse navbar-collapse" role="navigation">
+
+            <form class="navbar-form navbar-left" role="search" method="GET" action="">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="q" placeholder="Поиск по постам" value="{{ request.GET.q }}" >
+                    <span class="input-group-btn">
+                        <input class="btn btn-default" type="submit" value="Поиск">
+                    </span>
+                </div>
+            </form>
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'post:create' %}">Добавить пост</a></li>
+                {% endif %}
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'post:index' %}">Блог</a></li>
+                <li><a href="#">Информация об авторе</a></li>
+                <li><a href="#">Контакты</a></li>
+
+                {% if not request.user.is_authenticated %}
+                    <li><a href="{% url 'accounts:register' %}">Зарегистрироваться</a></li>
+                    <li><a href="{% url 'accounts:login' %}">Вход</a></li>
+                {% else %}
+                    <li><a href="{% url 'accounts:logout' %}">Выход</a></li>
+                {% endif %}
+            </ul>
+
+        </nav>
+
+    </div>
+</nav>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{#{% load static %}#}
+
+{% block title %}
+    {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <section id="home" class="home">
+        <div class="slide-text text-center">
+            <h2>Пример блог-шаблона на Django</h2>
+            <h3>Добро пожаловать, {{ request.user.username }}</h3>
+        </div>
+        <div class="slide-filter" ></div>
+        <img src="/static/external/images/slider/slide-1.jpg" class="par" alt="first" style="padding-left: 35px">
+            </section>
+
+
+{% endblock %}
+
